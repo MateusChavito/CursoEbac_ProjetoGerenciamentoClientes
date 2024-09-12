@@ -4,7 +4,9 @@ import br.com.mchaves.domain.Cliente;
 
 public interface IClienteDAO {
 
-    void salvar(Cliente cliente);
+    Boolean salvar(Cliente cliente);
 
     Cliente buscarPorCPF(long cpf);
+
+    void excluir(Long cpf);
 }

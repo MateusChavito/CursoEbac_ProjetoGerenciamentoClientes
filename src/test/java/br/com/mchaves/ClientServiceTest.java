@@ -6,21 +6,23 @@ import br.com.mchaves.domain.Cliente;
 import br.com.mchaves.services.ClienteService;
 import br.com.mchaves.services.IClienteService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-public class ClienteTest {
+public class ClientServiceTest {
 
     private IClienteService clienteService;
 
-    public ClienteTest(){
+    private Cliente cliente;
+
+    public ClientServiceTest(){
         IClienteDAO dao = new ClienteDaoMock();
         clienteService = new ClienteService(dao);
     }
 
-    @Test
-    public void pesquisarCliente(){
-
-        Cliente cliente = new Cliente();
+    @Before
+    public void init(){
+        cliente = new Cliente();
         cliente.setCpf(12312312312L);
         cliente.setNome("Mateus");
         cliente.setCidade("São Bernardo do Campo");
@@ -29,12 +31,26 @@ public class ClienteTest {
         cliente.setNumero(10);
         cliente.setTel(11999999999L);
 
-        clienteService.salvar(cliente);
+    }
+
+    @Test
+    public void pesquisarCliente(){
 
         Cliente clienteConsultado = clienteService.buscarPorCPF(cliente.getCpf());
-
         Assert.assertNotNull(clienteConsultado);
+    }
 
+    @Test
+    public void salvarCliente(){
+       Boolean retorno = clienteService.salvar(cliente);
+
+       Assert.assertTrue(retorno);
+
+    }
+
+    @Test
+    public void excluirCliente(){
+        clienteService.excluir(cliente.getCpf());
 
 
     }
