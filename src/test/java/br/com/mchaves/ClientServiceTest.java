@@ -52,6 +52,14 @@ public class ClientServiceTest {
     public void excluirCliente(){
         clienteService.excluir(cliente.getCpf());
 
+    }
+
+    @Test
+    public void alterarCliente(){
+        cliente.setNome("Mateus Chaves");
+        clienteService.alterar(cliente);
+
+        Assert.assertEquals("Mateus Chaves", cliente.getNome());
 
     }
 }
