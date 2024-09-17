@@ -1,14 +1,14 @@
 package br.com.mchaves.domain;
 
 public class Cliente {
-
+//add POST
     private String nome;
     private Long Cpf;
     private Long tel;
     private String end;
     private Integer numero;
     private String cidade;
-    private String estado;
+    private String estado;g
 
     public String getNome() {
         return nome;
